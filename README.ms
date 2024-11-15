@@ -10,7 +10,7 @@ Works on Windows and Linux. Developed specifically on/for Fedora Linux.
 
 ## Dependencies
 - .NET 9.0
--   Earlier .NET versions work too, but AI_Girlfriend.csproj needs to be updated to target earlier .NET versions.
+-   Earlier .NET versions work too, but garlic.csproj needs to be updated to target earlier .NET versions.
 
 ## Installation
 Run the following commands to install the program.
@@ -26,7 +26,7 @@ dotnet garlic.dll
 **The Windows executable doesn't like running from file explorer for some reason, so even if you're running the .exe rather than the .dll, you must run it from the command line.**
 
 
-**Note:** This targets  .NET 8.0 by default. You may need to edit AI_Girlfriend.csproj to target a different version of .NET depending on what works for you and your environment.
+**Note:** This targets  .NET 9.0 by default. You may need to edit garlic.csproj to target a different version of .NET depending on what works for you and your environment.
 
 ## Resources used:
 - [Avalonia](https://avaloniaui.net/)
