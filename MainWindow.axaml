@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:garlic"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="garlic.MainWindow"
+        x:DataType="local:MainWindow"
+        Title="garlic">
+    <Window.Styles>
+        <Style Selector="SelectableTextBlock.Headline">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontFamily" Value="Fonts/GoogleNoto.ttf"/>
+        </Style>
+        <Style Selector="Rectangle.Headlines">
+            <Setter Property="Grid.Column" Value="5"/>
+            <Setter Property="Grid.Row" Value="1"/>
+            <Setter Property="Grid.RowSpan" Value="5"/>
+            <Setter Property="RadiusX" Value="20"/>
+            <Setter Property="RadiusY" Value="20"/>
+        </Style>
+    </Window.Styles>
+   <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="#FF222222"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Rectangle Classes="Headlines">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#88444444"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Classes="Headlines">
+            <Rectangle.Fill>
+                <ImageBrush Source="Img/onion.png" Opacity="0.3"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="3" RadiusX="20" RadiusY="20">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#88444444"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Name="weatherImg" VerticalAlignment="Center" />
+        <TextBlock Name="Temperature" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" FontSize="80" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+        <Button Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" FontSize="80" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Command="{Binding C2F}">
+            <TextBlock Name="C2FButton" FontFamily="Fonts/GoogleNoto.ttf" FontSize="25"/>
+        </Button>
+        <TextBlock Name="Clock" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="3" FontSize="80" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Grid.RowSpan="2" FontSize="80" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Command="{Binding SwitchTimeFormat}">
+            <TextBlock Name="SwitchTimeButton" FontFamily="Fonts/GoogleNoto.ttf" FontSize="25"/>
+        </Button>    
+        <SelectableTextBlock Name="HeadlineLabel" Grid.Column="5" Grid.Row="1" Classes="Headline" Text="News Headlines" HorizontalAlignment="Center" FontSize="45" FontWeight="Bold"/>
+        <SelectableTextBlock Name="Headline1" Grid.Column="5" Grid.Row="2" Classes="Headline" />
+        <SelectableTextBlock Name="Headline2" Grid.Column="5" Grid.Row="3" Classes="Headline" />
+        <SelectableTextBlock Name="Headline3" Grid.Column="5" Grid.Row="4" Classes="Headline" />
+        <SelectableTextBlock Name="Headline4" Grid.Column="5" Grid.Row="5" Classes="Headline" />
+    </Grid>
+</Window>
