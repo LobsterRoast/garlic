@@ -34,4 +34,4 @@ dotnet garlic.dll
 - [Open-Meteo](https://open-meteo.com/)
 - [fluentui-emoji](https://github.com/microsoft/fluentui-emoji)
 - [Google Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans)
-- [The Onion] (https://theonion.com/)
+- [The Onion](https://theonion.com/)
