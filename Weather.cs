@@ -66,6 +66,7 @@ public class WeatherClient
                 return new Bitmap("gabe.jpg");
         }
     }
+    // Initializes parts of the Weather client asynchronously
     public async Task WeatherClientInit() {
         await GetCoordinates();
         await GetWeatherData();
@@ -82,6 +83,7 @@ public class WeatherClient
             root = json.RootElement;
         }
     }
+    // Reads ipinfo.io to get user's coordinates
     private async Task GetCoordinates() {
         await RunHttpRequest("http://ipinfo.io/json");
         string[] coordinates = root.GetProperty("loc").GetString().Split(',');
