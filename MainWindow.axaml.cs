@@ -14,17 +14,21 @@ namespace garlic;
 
 public partial class MainWindow : Window
 {
+    // Initialize the weather client (see Weather.cs)
     WeatherClient weather = new WeatherClient();
+    // Declare reactive commands to execute on button presses
     public ReactiveCommand<Unit, Unit> C2F { get; }
     public ReactiveCommand<Unit, Unit> SwitchTimeFormat { get; }
     bool militaryTime = false;
     bool fahrenheit = false;
     public MainWindow()
-    {
+    {   
+        // Switch units of temperature
         C2F = ReactiveCommand.Create(() => {
             fahrenheit = !fahrenheit;
             SetTemp();
         });
+        // Switch between 12-hr and 24-hr clock
         SwitchTimeFormat = ReactiveCommand.Create(() => {
             militaryTime = !militaryTime;
             ClockTick();
@@ -33,6 +37,7 @@ public partial class MainWindow : Window
         DispatcherTimer timer = new DispatcherTimer() {
             Interval = TimeSpan.FromSeconds(1)
         };
+        // Execute ClockTick() on each tick of the timer
         timer.Tick += ClockTick;
         timer.Start();
         InitializeComponent();
@@ -60,11 +65,13 @@ public partial class MainWindow : Window
         }
     }
     private void ClockTick() {
+        // If using 24-hr clock, display the time in 24 hr format
         if (militaryTime) {
             Clock.Text = DateTime.Now.ToString("HH:mm:ss");
             SwitchTimeButton.Text = "Switch to 12-hour clock";
         }
         else {
+        // If using 12-hr time, display the time and append either AM or PM to it
             DateTime now = DateTime.Now;
             Clock.Text = now.ToString("hh:mm:ss");
             int hour = now.Hour;
@@ -75,9 +82,11 @@ public partial class MainWindow : Window
             SwitchTimeButton.Text = "Switch to 24-hour clock";
         }
     }
+    // Convert between Celsius and Fahrenheit
     private double CtoF(double d) {
         return d * (9d/5d) + 32d;
     }
+    // Set the TextBlock for temperature to display the temperature
     private void SetTemp() {
         if (fahrenheit) {
             Temperature.Text = Math.Round(CtoF(weather.currentTemperature)).ToString() + "°F";
@@ -92,6 +101,7 @@ public partial class MainWindow : Window
         await weather.WeatherClientInit();
         SetTemp();
         weatherImg.Source = weather.WeatherCodeToVisualData();
+        // Reads The Onion's RSS feed
         XmlReader reader = XmlReader.Create("https://theonion.com/feed");
         SyndicationFeed feed = SyndicationFeed.Load(reader);
         reader.Close();
@@ -103,6 +113,7 @@ public partial class MainWindow : Window
             Headline3,
             Headline4
         };
+        // Sets each Headline TextBlock to display a news headline from The Onion
         foreach (SyndicationItem item in firstFourItems)
         {
             textBlocks[i].Text = item.Title.Text;
